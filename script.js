@@ -1,34 +1,3 @@
-// function loco(){
-//     gsap.registerPlugin(ScrollTrigger);
-    
-//     // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
-    
-//     const locoScroll = new LocomotiveScroll({
-//       el: document.querySelector("#main"),
-//       smooth: true
-//     });
-//     // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-//     locoScroll.on("scroll", ScrollTrigger.update);
-    
-//     // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
-//     ScrollTrigger.scrollerProxy("#main", {
-//       scrollTop(value) {
-//         return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-//       }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-//       getBoundingClientRect() {
-//         return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-//       },
-//       // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-//       pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
-//     });
-    
-//     // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
-//     ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-    
-//     // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-//     ScrollTrigger.refresh();
-//   }
-//   loco()
     
 function home(){
     const img = document.querySelector('.img');
@@ -70,60 +39,8 @@ container.addEventListener('mouseleave', () => {
 }
 home();
 
-// function imgSlides(){
-
+function nav(){
     
-// gsap.to(".fleftelem",{
-//     scrollTrigger:{
-//         trigger:"#fimages",
-//         pin:true,
-//         start:"top top",
-//         end:"bottom bottom",
-//         endTrigger:".last",
-//         scrub:1
-//     },
-//     y:"-300%",
-//     ease:Power1
-// })
-// let sections = document.querySelectorAll(".fleftelem");
-// Shery.imageEffect("#images", {
-//     style: 5,
-//     config:{onMouse:{value:1}},
-//     slideStyle: (setScroll) => {
-//         sections.forEach(function(section,index) {
-//         ScrollTrigger.create({
-//             trigger: section,
-//             start:"top top",
-//             scrub:1,
-//             // markers:true,
-//             onUpdate: function(prog){
-//                 setScroll(prog.progress+index)
-//             },
-//         });
-//     });
-//     },
-//   });
-// }
-// imgSlides();
-
-// function setupSticky() {
-//     // Pin the header and add a Y-translate animation
-//     gsap.to("#stickyHeader", {
-//       y: 0, // Translates to its original position
-//       scrollTrigger: {
-//         trigger: "stickyTop",
-//         scroller:"#main",
-//         start: "top top", // Start pinning when header reaches the top
-//         end: "bottom top", // Adjust this based on the scrollable content
-//         pin: true, // Pins the element during the specified range
-//         scrub: true, // Smoothly animates as you scroll
-//         markers: true, // Remove in production; helps debug
-//       },
-//     });
-//   }
-  
-//   setupSticky();
-
 const toggleButton = document.querySelector(".burger");
 const overlay = document.querySelector(".overlay");
 const subNav = document.querySelector(".sub-nav");
@@ -171,3 +88,58 @@ toggleButton1.addEventListener("click", function () {
         toggleButton1.classList.add("active"); // Switch to close icon
         toggleButton.classList.remove("active"); // Switch to close icon
 });
+}
+nav();
+
+function fadeIn(){
+    const fadeInElements = document.querySelectorAll('.fade-in p');
+
+// Apply the fade-in animation with ScrollTrigger
+fadeInElements.forEach((element) => {
+  gsap.from(element, {
+    opacity: 0,  // Initial opacity
+    y: 50,       // Initial vertical position (optional)
+    duration: 0.1,  // Duration of the animation
+    scrollTrigger: {
+      trigger: element,  // The element that triggers the animation
+      start: 'top bottom',   // When to start the animation (when the element reaches 80% from the top)
+      end: 'top 70%',     // Optional, where the animation ends
+      scrub: true,        // Smooth scrubbing
+      markers: false,
+      stagger:0.5     // Set to true to see scroll markers (optional)
+    }
+  });
+});
+
+}
+fadeIn();
+
+function round(){
+    
+const element = document.querySelector('.round');
+
+gsap.to(element, {
+    borderTopLeftRadius: '100%', // Target value for border-radius
+    duration: 2,                 // Add duration for smoothness
+    ease: "power2.out",          // Ease out for smooth animation
+    scrollTrigger: {
+      trigger: element,           // The element that triggers the animation
+      start: 'top 80%',            // When the animation should start (when the element reaches 80% from top)
+      end: 'top 20%',              // Optional, where the animation ends
+      scrub: 1,                    // Scrub value to make the animation follow scroll position smoothly
+    //   markers: true               // Set to true to see scroll markers (optional)
+    }
+  });
+}
+round();
+
+function shery(){
+    
+  Shery.mouseFollower();
+  Shery.makeMagnet(".magnet-target" /* Element to target.*/, {
+    //Parameters are optional.
+    ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+    duration: 1,
+  });
+}
+shery();
