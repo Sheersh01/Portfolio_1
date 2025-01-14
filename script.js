@@ -1,43 +1,54 @@
+if(window.innerWidth>=768){
+
+    function home(){
+        const img = document.querySelector('.img');
+    const container = document.querySelector('.bg');
     
-function home(){
-    const img = document.querySelector('.img');
-const container = document.querySelector('.bg');
-
-// Minimum and maximum limits for clip-path
-const minClipY = 0; // Minimum: top of the container
-const maxClipY = 50; // Maximum: 50% of the container height
-
-container.addEventListener('mousemove', (e) => {
-    const rect = container.getBoundingClientRect();
-    const relativeY = e.clientY - rect.top;
-    const containerHeight = rect.height;
-
-    // Calculate and clamp the clip-path percentage
-    const percentageY = Math.min(
-        maxClipY,
-        Math.max(minClipY, (relativeY / containerHeight) * 100)
-    );
-
-    gsap.to(img, {
-        clipPath: `polygon(0 ${percentageY}%, 100% ${percentageY}%, 100% 100%, 0% 100%)`,
-        duration: 0.2, // Shorter duration for more responsiveness
-        ease: "none",
-        scale: 1.0
+    const minClipY = 0;
+    const maxClipY = 50; 
+    
+    container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const relativeY = e.clientY - rect.top;
+        const containerHeight = rect.height;
+        const percentageY = Math.min(
+            maxClipY,
+            Math.max(minClipY, (relativeY / containerHeight) * 100)
+        );
+    
+        gsap.to(img, {
+            clipPath: `polygon(0 ${percentageY}%, 100% ${percentageY}%, 100% 100%, 0% 100%)`,
+            duration: 0.2,
+            ease: "none",
+            scale: 1.0
+        });
     });
-});
-
-container.addEventListener('mouseleave', () => {
-    // Smoothly reset clip-path to its original state
-    gsap.to(img, {
-        clipPath: `polygon(0 ${minClipY}%, 100% ${minClipY}%, 100% 100%, 0% 100%)`,
-        duration: 0.5,
-        ease: "power2.out",
-        scale: 1.1
+    
+    container.addEventListener('mouseleave', () => {
+        gsap.to(img, {
+            clipPath: `polygon(0 ${minClipY}%, 100% ${minClipY}%, 100% 100%, 0% 100%)`,
+            duration: 0.5,
+            ease: "power2.out",
+            scale: 1.1
+        });
     });
-});
+    
+    }
+    home();
 
+    function shery(){
+    
+        Shery.mouseFollower();
+        Shery.makeMagnet(".magnet-target", {
+       
+          ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+          duration: 1,
+        });
+      }
+      shery();
+      
 }
-home();
+
 
 function nav(){
     
@@ -65,7 +76,7 @@ timeline
         stagger: 0.2,
 }, "-=1")
 .to(activeItem, {
-        "--after-width": "100%", // Animate the custom property
+        "--after-width": "100%",
         ease: "power4.inOut",
         duration: 1,
 }, "<")
@@ -78,15 +89,15 @@ timeline
 }, "<");
 
 toggleButton.addEventListener("click", function () {
-        timeline.play(); // Play the overlay animation
-        toggleButton.classList.add("active"); // Switch to close icon
-        toggleButton1.classList.remove("active"); // Switch to close icon
+        timeline.play(); 
+        toggleButton.classList.add("active"); 
+        toggleButton1.classList.remove("active");
 });
 
 toggleButton1.addEventListener("click", function () {
-        timeline.reverse(); // Play the overlay animation
-        toggleButton1.classList.add("active"); // Switch to close icon
-        toggleButton.classList.remove("active"); // Switch to close icon
+        timeline.reverse(); 
+        toggleButton1.classList.add("active"); 
+        toggleButton.classList.remove("active"); 
 });
 }
 nav();
@@ -94,19 +105,18 @@ nav();
 function fadeIn(){
     const fadeInElements = document.querySelectorAll('.fade-in p');
 
-// Apply the fade-in animation with ScrollTrigger
 fadeInElements.forEach((element) => {
   gsap.from(element, {
-    opacity: 0,  // Initial opacity
-    y: 50,       // Initial vertical position (optional)
-    duration: 0.1,  // Duration of the animation
+    opacity: 0, 
+    y: 50,      
+    duration: 0.1, 
     scrollTrigger: {
-      trigger: element,  // The element that triggers the animation
-      start: 'top bottom',   // When to start the animation (when the element reaches 80% from the top)
-      end: 'top 70%',     // Optional, where the animation ends
-      scrub: true,        // Smooth scrubbing
+      trigger: element, 
+      start: 'top bottom',  
+      end: 'top 70%',    
+      scrub: true,        
       markers: false,
-      stagger:0.5     // Set to true to see scroll markers (optional)
+      stagger:0.5     
     }
   });
 });
@@ -117,29 +127,30 @@ fadeIn();
 function round(){
     
 const element = document.querySelector('.round');
-
 gsap.to(element, {
-    borderTopLeftRadius: '100%', // Target value for border-radius
-    duration: 2,                 // Add duration for smoothness
-    ease: "power2.out",          // Ease out for smooth animation
+    borderTopLeftRadius: '100%', 
+    duration: 2,                
+    ease: "power2.out",        
     scrollTrigger: {
-      trigger: element,           // The element that triggers the animation
-      start: 'top 80%',            // When the animation should start (when the element reaches 80% from top)
-      end: 'top 20%',              // Optional, where the animation ends
-      scrub: 1,                    // Scrub value to make the animation follow scroll position smoothly
-    //   markers: true               // Set to true to see scroll markers (optional)
+      trigger: element,          
+      start: 'top 80%',           
+      end: 'top 20%',              
+      scrub: 1,                  
     }
   });
+
+  const element2 = document.querySelector('.unround');
+  gsap.to(element2, {
+      borderBottomRightRadius: '5%',
+      duration: 2,                
+      ease: "power2.out",       
+      scrollTrigger: {
+        trigger: element2,          
+        start: 'top 80%',            
+        end: 'top 20%',              
+        scrub: 1,                  
+      }
+    });
+  
 }
 round();
-
-function shery(){
-    
-  Shery.mouseFollower();
-  Shery.makeMagnet(".magnet-target" /* Element to target.*/, {
-    //Parameters are optional.
-    ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-    duration: 1,
-  });
-}
-shery();
