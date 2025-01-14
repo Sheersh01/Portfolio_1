@@ -56,7 +56,6 @@ nav{
 } */
 .logo{
   align-items: center;
-  font-family: "Canopee";
 }
 
 .logo a{
@@ -166,11 +165,9 @@ nav{
   gap: 0.5em;
   transform: translateX(-50%);
   opacity: 0;
-  font-family: Canopee;
 }
 
 .sub-nav p{
-  font-family: Canopee;
   font-size: 30px;
   color: #F5E7D3;
 }
@@ -199,7 +196,6 @@ nav{
 
 .overlay-nav .logo1{
   align-items: center;
-  font-family: "Canopee";
 }
 
 .overlay-nav .logo1 a{
