@@ -166,11 +166,11 @@ nav{
   gap: 0.5em;
   transform: translateX(-50%);
   opacity: 0;
-  font-family: "Canopee";
+  font-family: Canopee;
 }
 
 .sub-nav p{
-  font-family: "Canopee";
+  font-family: Canopee;
   font-size: 30px;
   color: #F5E7D3;
 }
