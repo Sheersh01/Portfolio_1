@@ -134,14 +134,13 @@ nav{
   color: #F5E7D3;
   position: relative;
   text-align: center;
-  font-family: "Canopee";
-  font-size: 5vw;
+  font-size: 2vw;
   line-height: 80%;
   will-change: transform;
   transition: letter-spacing 0.3s;
 }
 .menu-item p:hover{
-  letter-spacing: 0.075em;
+  letter-spacing: 0.05em;
 }
 .menu-item p#active::after{
   content: "";
@@ -250,7 +249,7 @@ nav{
   }
 
   .menu-item p {
-      font-size: 8vw;
+      font-size: 4vw;
   }
 
   .sub-nav p {
@@ -264,7 +263,7 @@ nav{
   }
 
   .menu-item p {
-      font-size: 25vw;
+      font-size: 4vw;
   }
 
   .sub-nav p {
@@ -306,7 +305,7 @@ nav{
     justify-content: flex-end;
     padding: 1vw 3vw;
 }
-span {
+.dot {
   animation: blink 0.5s ease-in-out infinite alternate;
 }
 @keyframes blink {
@@ -352,3 +351,6 @@ span {
 }
 
 
+.clut>h1>span{
+  display: inline-block;
+}
