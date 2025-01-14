@@ -6,6 +6,10 @@
   font-family: bridge;
   src: url(./Font/ef9c9918e64b1852-s.p.otf);
 }
+@font-face {
+    font-family: Canopee;
+    src: url(./Fonts/616fd1dd00cf6c70f978fc69_Canopee.woff2);
+}
 * {
   margin: 0;
   padding: 0;
