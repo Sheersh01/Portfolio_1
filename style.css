@@ -1,0 +1,354 @@
+@font-face {
+  font-family: rigata;
+  src: url(./Font/0d0efb37e7827579-s.p.otf);
+}
+@font-face {
+  font-family: bridge;
+  src: url(./Font/ef9c9918e64b1852-s.p.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 12px; 
+  height:12px; 
+}
+::-webkit-scrollbar-track {
+  background-color: #F5E7D3; 
+
+}
+::-webkit-scrollbar-thumb {
+  background-color: #AC4800;
+  border-radius: 10px;
+  border: 3px solid #F5E7D3;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+nav{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:1.5em 2em;
+  color: #AC4800;
+  /* background-color: rgba(208, 198, 188, 0.778); */
+  background-color: #F5E7D3;
+  /* mix-blend-mode: difference; */
+  z-index: 2;
+}
+
+/* nav > div{
+  flex:1
+} */
+.logo{
+  align-items: center;
+  font-family: "Canopee";
+}
+
+.logo a{
+  text-decoration: none;
+  font-size: 30px;
+  color: #AC4800;
+}
+.toggle-btn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.burger{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.75em 2em 1.5em 2em;
+  background-color: #F5E7D3;
+  outline: none;
+  border: none;
+  width: 28px;
+  height: 20px;
+  transition: all 250ms ease-out;
+}
+
+.burger:before,
+.burger:after{
+  content: "";
+  width: 40px;
+  height: 2px;
+  position: absolute;
+  background-color: #AC4800;
+  transition: all 250ms ease-out;
+  will-change: transform;
+}
+
+.burger:before{
+  transform: translateY(-3px);
+}
+.burger:after{
+  transform: translateY(3px);
+}
+.active.burger:before{
+  transform: translateY(0) rotate(45deg);
+}
+.active.burger:after{
+  transform: translateY(0) rotate(-45deg);
+}
+
+.overlay{
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #141412;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  will-change: transform;
+}
+.overlay-menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.menu-item{
+  display: flex;
+  cursor: pointer;
+  clip-path: polygon(100 100, 100% 0, 100 100, 100 100); 
+}
+
+.menu-item p {
+  color: #F5E7D3;
+  position: relative;
+  text-align: center;
+  font-family: "Canopee";
+  font-size: 5vw;
+  line-height: 80%;
+  will-change: transform;
+  transition: letter-spacing 0.3s;
+}
+.menu-item p:hover{
+  letter-spacing: 0.075em;
+}
+.menu-item p#active::after{
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 0;
+  transform: translateY(-50%);
+  width: var(--after-width, 0); /* Default is 0, updated via JS */
+  height: 12px;
+  background-color: #c03f13;
+}
+.sub-nav{
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  display: flex;
+  gap: 0.5em;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.sub-nav p{
+  font-family: "Canopee";
+  font-size: 30px;
+  color: #F5E7D3;
+}
+
+
+
+.website-content {
+  padding-bottom: 100px; /* Extra space for scrolling */
+}
+
+
+.overlay-nav{
+  border-bottom: 2px solid #cdc6be3f;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:1.5em 2em;
+  color: #F5E7D3;
+  background-color: #141412;
+  /* mix-blend-mode: difference; */
+  z-index: 2;
+}
+
+
+.overlay-nav .logo1{
+  align-items: center;
+  font-family: "Canopee";
+}
+
+.overlay-nav .logo1 a{
+  text-decoration: none;
+  font-size: 30px;
+  color: #F5E7D3;
+}
+.overlay-nav .toggle-btn1{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.overlay-nav .burger1{
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.75em 2em 1.5em 2em;
+  background-color: #ffffff00;
+  outline: none;
+  border: none;
+  width: 28px;
+  height: 20px;
+  transition: all 250ms ease-out;
+
+}
+
+.overlay-nav .burger1:before,
+.burger1:after{
+  content: "";
+  width: 40px;
+  height: 2px;
+  position: absolute;
+  background-color: #F5E7D3;
+  transition: all 250ms ease-out;
+  will-change: transform;
+}
+.overlay-nav .burger1:before {
+  transform: translateY(0px) rotate(-45deg);
+}
+.overlay-nav .burger1:after {
+  transform: translateY(0px) rotate(45deg); 
+}
+.overlay-nav .active.burger1:before {
+  transform: translateY(-3px) rotate(0deg); 
+}
+.overlay-nav .active.burger1:after {
+  transform: translateY(3px) rotate(0deg);
+}
+
+@media (max-width: 900px) {
+  .logo a {
+      font-size: 20px; /* Smaller font for screens below 900px */
+  }
+
+  .menu-item p {
+      font-size: 8vw;
+  }
+
+  .sub-nav p {
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo a {
+      font-size: 15px; /* Even smaller for smaller screens */
+  }
+
+  .menu-item p {
+      font-size: 25vw;
+  }
+
+  .sub-nav p {
+      font-size:16px;
+  }
+  .overlay-nav .logo1 a{
+    font-size: 15px;
+  }
+  .info{
+      font-size: 12px;
+  }
+  .info1{
+      font-size: 12px;
+  }
+}
+
+
+.img{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: clip-path 0.2s ease-out;  
+    transition: scale 0.2s ease-out; 
+}
+#main{
+    /* background-color: white; */
+    position: relative;
+    z-index: 100;
+  }
+
+#footer{
+    position: fixed;
+    color: #AC4800;
+    background-color: #F5E7D3;
+    height: 105vh;
+    width: 100%;
+    z-index: 1;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1vw 3vw;
+}
+span {
+  animation: blink 0.5s ease-in-out infinite alternate;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.marque{
+  width: 100%;
+  padding: 0.8vw;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 100px;
+}
+
+.marque h1{
+  display: inline-block;
+  font-size: 6.5vw;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-right: 16px;
+  letter-spacing: 3px;
+  animation-name: move;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes move{
+  from{
+      transform: translateX(0);
+  }
+  to{
+      transform: translateX(calc(-100% - 20px));
+  }
+}
+
+.marque:hover h1{
+  animation-play-state: paused;
+}
+
+
